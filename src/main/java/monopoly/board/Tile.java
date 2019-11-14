@@ -3,7 +3,6 @@ package monopoly.board;
 import monopoly.Player;
 import monopoly.enums.RenderOrientation;
 import monopoly.rendering.IRenderable;
-import monopoly.util.Stack;
 
 public abstract class Tile implements IRenderable {
 
@@ -16,7 +15,19 @@ public abstract class Tile implements IRenderable {
         this.texture = texture;
     }
     
-    public abstract void onLanded(Player player);
+    public abstract void onLanded(Player player, Board board);
 
     public abstract void renderMarker();
+
+    public String getTitle() {
+        return this.title;
+    }
+
+    public String getTexture() {
+        return this.texture;
+    }
+
+    public RenderOrientation getRenderOrientation() {
+        return this.renderOrientation;
+    }
 }

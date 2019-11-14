@@ -1,17 +1,18 @@
 package monopoly.board.tiles;
 
 import monopoly.Player;
+import monopoly.board.Board;
 import monopoly.board.IPassable;
 import monopoly.board.Tile;
 
 public class TileJailVisiting extends Tile implements IPassable {
 
-    protected TileJailVisiting(String title, String texture) {
+    public TileJailVisiting(String title, String texture) {
         super(title, texture);
     }
 
     @Override
-    public void onLanded(Player player) {
+    public void onLanded(Player player, Board board) {
 
     }
 

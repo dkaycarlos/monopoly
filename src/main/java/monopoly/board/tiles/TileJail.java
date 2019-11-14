@@ -1,6 +1,7 @@
 package monopoly.board.tiles;
 
 import monopoly.Player;
+import monopoly.board.Board;
 import monopoly.board.Tile;
 
 public class TileJail extends Tile {
@@ -13,7 +14,7 @@ public class TileJail extends Tile {
     }
 
     @Override
-    public void onLanded(Player player) {
+    public void onLanded(Player player, Board board) {
 
     }
 
