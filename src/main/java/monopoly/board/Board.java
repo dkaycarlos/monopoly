@@ -4,7 +4,8 @@ import monopoly.Banker;
 import monopoly.Player;
 import monopoly.items.ChanceCard;
 import monopoly.items.ChestCard;
-import monopoly.rendering.IRenderable;
+import monopoly.rendering.Mesh;
+import monopoly.rendering.RenderableObject;
 import monopoly.util.CircularlyLinkedList;
 import monopoly.util.Node;
 import monopoly.util.Queue;
@@ -12,7 +13,7 @@ import monopoly.util.Queue;
 import java.util.HashMap;
 import java.util.Map;
 
-public class Board implements IRenderable{
+public class Board extends RenderableObject {
 
     private final CircularlyLinkedList<Tile> tileList;
     private final Queue<ChanceCard> chanceQueue;
@@ -20,7 +21,8 @@ public class Board implements IRenderable{
     private final Map<Player, Node<Tile>> playerMap;
     private final Banker bank;
 
-    public Board() {
+    public Board(Mesh mesh) {
+        super(mesh);
         this.tileList = new CircularlyLinkedList<>();
         this.chanceQueue = new Queue<>();
         this.chestQueue = new Queue<>();

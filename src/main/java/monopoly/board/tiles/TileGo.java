@@ -4,13 +4,14 @@ import monopoly.Player;
 import monopoly.board.Board;
 import monopoly.board.IPassable;
 import monopoly.board.Tile;
+import monopoly.rendering.Mesh;
 
 public class TileGo extends Tile implements IPassable {
 
     private int rewardAmount;
 
-    public TileGo(String title, String texture, int rewardAmount) {
-        super(title, texture);
+    public TileGo(String title, Mesh mesh, int rewardAmount) {
+        super(title, mesh);
         this.rewardAmount = rewardAmount;
     }
 
