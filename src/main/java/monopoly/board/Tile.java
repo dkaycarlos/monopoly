@@ -15,9 +15,6 @@ public abstract class Tile extends RenderableObject {
         this.title = title;
     }
 
-    public String getTitle() {
-        return this.title;
-    }
     
     public abstract void onLanded(Player player, Board board);
 
