@@ -1,6 +1,7 @@
 package monopoly.board.tiles;
 
 import monopoly.Player;
+import monopoly.board.Board;
 import monopoly.board.IPassable;
 import monopoly.board.Tile;
 import monopoly.rendering.Mesh;
@@ -15,7 +16,7 @@ public class TileGo extends Tile implements IPassable {
     }
 
     @Override
-    public void onLanded(Player player) {
+    public void onLanded(Player player, Board board) {
 
     }
 
