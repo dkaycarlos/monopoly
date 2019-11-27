@@ -21,11 +21,6 @@ public class TileGo extends Tile implements IPassable {
     }
 
     @Override
-    public void renderMarker() {
-
-    }
-
-    @Override
     public void onPassed(Player player) {
 
     }

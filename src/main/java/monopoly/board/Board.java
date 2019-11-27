@@ -2,8 +2,8 @@ package monopoly.board;
 
 import monopoly.Player;
 import monopoly.board.tiles.TileGo;
-import monopoly.board.tiles.TileProperty;
 import monopoly.enums.PropertyType;
+import monopoly.enums.RenderOrientation;
 import monopoly.items.PropertyCard;
 import monopoly.rendering.Mesh;
 import monopoly.rendering.RenderableObject;
@@ -16,7 +16,6 @@ import java.io.File;
 import java.io.FileReader;
 import java.lang.reflect.Constructor;
 import java.util.ArrayList;
-import java.util.Iterator;
 
 public class Board extends RenderableObject {
 
@@ -63,10 +62,6 @@ public class Board extends RenderableObject {
                         costs[6] = propertyObject.getInt("mortgage");
                         costs[7] = propertyObject.getInt("cost_house");
                         costs[8] = propertyObject.getInt("cost_hotel");
-                        for (int k = 0; k < costs.length; k++){
-                            System.out.print(costs[k] + " ");
-                        }
-                        System.out.println("");
                     }
                     //Check if it's a railroad
                     else if(propertyObject.has("rents")){
@@ -75,21 +70,12 @@ public class Board extends RenderableObject {
                         for(int k = 0; k < costs.length; k++){
                             costs[k] = propertyObject.getJSONArray("rents").getJSONObject(k).getInt("rent");
                         }
-                        //Printing for test purposes
-                        for (int k = 0; k < costs.length; k++){
-                            System.out.print(costs[k] + " ");
-                        }
-                        System.out.println("");
                     }
                     //If no rents - utility, alter int[]
                     else{
                         costs = new int[2];
                         costs[0] = (propertyObject.getInt("mult1"));
                         costs[1] = (propertyObject.getInt("mult2"));
-                        for (int k = 0; k < costs.length; k++){
-                            System.out.print(costs[k] + " ");
-                        }
-                        System.out.println("");
                     }
                     //Creation of propertyCard object to be attached to Tile
                     PropertyCard card = new PropertyCard(tileObject.getString("title"), PropertyType.values()[propertyObject.getInt("group")], costs, null);
@@ -97,13 +83,13 @@ public class Board extends RenderableObject {
                     cards.add(card);
                     //Creation of Tile
                     newTile = (Tile) c.newInstance(tileObject.get("title"), null, card);
+                    card.setProperty(newTile);
                 } else {
                     int value = tileObject.getInt("extra");
                     newTile = (Tile) c.newInstance(tileObject.getString("title"), null, value);
                 }
             }
-
-            System.out.println(newTile.getTitle());
+            newTile.setRenderOrientation(RenderOrientation.valueOf(tileObject.getString("orientation")));
         }
     }
 

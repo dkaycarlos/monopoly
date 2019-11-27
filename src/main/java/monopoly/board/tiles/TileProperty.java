@@ -27,8 +27,4 @@ public class TileProperty extends Tile {
 
     }
 
-    @Override
-    public void renderMarker() {
-
-    }
 }

@@ -19,9 +19,4 @@ public class TileJail extends Tile {
 
     }
 
-    @Override
-    public void renderMarker() {
-
-    }
-
 }
