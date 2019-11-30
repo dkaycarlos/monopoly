@@ -8,14 +8,14 @@ import monopoly.items.PropertyCard;
 import monopoly.rendering.Mesh;
 import monopoly.rendering.RenderableObject;
 import monopoly.util.CircularlyLinkedList;
+import monopoly.util.Node;
 import org.json.JSONArray;
 import org.json.JSONObject;
 import org.json.JSONTokener;
 
-import java.io.File;
-import java.io.FileReader;
 import java.lang.reflect.Constructor;
 import java.util.ArrayList;
+import java.util.ListIterator;
 
 public class Board extends RenderableObject {
 
@@ -90,6 +90,19 @@ public class Board extends RenderableObject {
                 }
             }
             newTile.setRenderOrientation(RenderOrientation.valueOf(tileObject.getString("orientation")));
+            //Create node containing tile information - Last Step
+            Node<Tile> tileNode = new Node<Tile>();
+            tileNode.setData(newTile);
+            //Add tile to tilelist
+            tileList.add(tileNode);
+        }
+        //Connect tail at end of circularlylinkedlist to head - Connect Boardwalk to GO/Go to Boardwalk
+        tileList.getTail().setNext(tileList.getHead());
+        tileList.getHead().setPrevious(tileList.getTail());
+        //Check if all tiles were added into list - iterate through list and print the data
+        ListIterator<Tile> x = tileList.iterator(); //Iterator which starts at head
+        for(int i = 0; i < 41; i++){
+            System.out.println(x.previous().getTitle());
         }
     }
 

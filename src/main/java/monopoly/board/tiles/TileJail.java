@@ -15,7 +15,7 @@ public class TileJail extends Tile {
     }
 
     @Override
-    public void onLanded(Player player, Board board) {
+    public void onLanded(Player player) {
 
     }
 

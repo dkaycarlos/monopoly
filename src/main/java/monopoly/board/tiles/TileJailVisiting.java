@@ -13,7 +13,7 @@ public class TileJailVisiting extends Tile implements IPassable {
     }
 
     @Override
-    public void onLanded(Player player, Board board) {
+    public void onLanded(Player player) {
 
     }
 
